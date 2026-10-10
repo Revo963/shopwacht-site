@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopWacht – Online-Shop auf Abmahnrisiken prüfen</title>
+  <meta name="description" content="ShopWacht prüft Produkttexte und Rechtstexte deutscher Online-Shops auf typische Abmahnrisiken. Läuft auf dem eigenen Rechner, mit eigenem OpenRouter-Schlüssel. Quelltext auf GitHub.">
+  <meta name="theme-color" content="#0c0c0c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/barlow-semicondensed-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#inhalt">Zum Inhalt</a>
+
+  <header class="masthead">
+    <a class="wordmark" href="#" aria-label="ShopWacht – Startseite"><span class="wordmark__mark" aria-hidden="true"></span>ShopWacht</a>
+    <nav class="masthead__nav" aria-label="Hauptnavigation">
+      <a href="#pruefpunkte">Prüfpunkte</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#start">Installieren</a>
+      <a href="#zahlen">Zahlen</a>
+      <a class="masthead__repo" href="https://github.com/Revo963/shopwacht" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="inhalt">
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow">Abmahn-Vorprüfung für Online-Shops</p>
+        <h1 class="hero__title">Prüfen Sie Ihren Shop, <span class="hero__title-mark">bevor es die Konkurrenz tut.</span></h1>
+        <p class="hero__lede">ShopWacht liest jede Produktbeschreibung und Ihre Rechtstexte und markiert, was in Deutschland regelmäßig abgemahnt wird. Mit Fundstelle, Rechtsgrundlage und Lösung.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#start">In drei Schritten starten <span aria-hidden="true">↓</span></a>
+          <a class="button" href="https://github.com/Revo963/shopwacht" rel="noopener">Quelltext auf GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <ul class="hero__facts">
+          <li><b>16</b> Prüfpunkte</li>
+          <li>Shopify <span aria-hidden="true">&amp;</span> WooCommerce</li>
+          <li>läuft auf Ihrem Rechner</li>
+        </ul>
+      </div>
+
+      <div class="scanner" data-scanner aria-label="Beispiel: So markiert ShopWacht eine Produktseite">
+        <div class="scanner__frame">
+          <span class="scanner__corner scanner__corner--tl" aria-hidden="true"></span>
+          <span class="scanner__corner scanner__corner--tr" aria-hidden="true"></span>
+          <span class="scanner__corner scanner__corner--bl" aria-hidden="true"></span>
+          <span class="scanner__corner scanner__corner--br" aria-hidden="true"></span>
+
+          <div class="listing" data-listing>
+            <div class="scanner__beam" data-beam aria-hidden="true"></div>
+            <p class="listing__shop">ihr-shop.de › Tee › Abendruhe</p>
+            <h2 class="listing__title">Bio-Kräutertee „Abendruhe“, 250&nbsp;g</h2>
+            <p class="listing__price"><span class="hit" data-hit="grundpreis">9,95 €</span> <span class="hit hit--soft" data-hit="streichpreis"><s>statt 14,95 €</s></span></p>
+            <p class="listing__text">Unsere Mischung ist <span class="hit" data-hit="umwelt">100 % umweltfreundlich</span> verpackt und <span class="hit" data-hit="gesundheit">stärkt das Immunsystem</span>. Ausgezeichnet als <span class="hit hit--soft" data-hit="test">Testsieger 2025</span>.</p>
+            <p class="listing__note">Erfundenes Beispiel.</p>
+          </div>
+
+          <ol class="findings" aria-label="Befunde im Beispiel">
+            <li class="finding" data-finding="grundpreis"><span class="mark mark--risiko" aria-hidden="true"></span><span class="finding__title">Grundpreis fehlt</span><span class="finding__law">§ 4 PAngV</span></li>
+            <li class="finding finding--soft" data-finding="streichpreis"><span class="mark mark--pruefen" aria-hidden="true"></span><span class="finding__title">Streichpreis ohne 30-Tage-Tiefstpreis</span><span class="finding__law">§ 11 PAngV</span></li>
+            <li class="finding" data-finding="umwelt"><span class="mark mark--risiko" aria-hidden="true"></span><span class="finding__title">Pauschale Umweltaussage</span><span class="finding__law">§ 5 UWG</span></li>
+            <li class="finding" data-finding="gesundheit"><span class="mark mark--risiko" aria-hidden="true"></span><span class="finding__title">Gesundheitsaussage nicht zugelassen</span><span class="finding__law">Art. 10 HCVO</span></li>
+            <li class="finding finding--soft" data-finding="test"><span class="mark mark--pruefen" aria-hidden="true"></span><span class="finding__title">Testwerbung ohne Fundstelle</span><span class="finding__law">§ 5 UWG</span></li>
+          </ol>
+
+          <div class="tally" aria-live="off">
+            <p class="tally__cell"><span class="mark mark--risiko" aria-hidden="true"></span>Risiko <b data-count="risiko">3</b></p>
+            <p class="tally__cell"><span class="mark mark--pruefen" aria-hidden="true"></span>Prüfen <b data-count="pruefen">2</b></p>
+            <p class="tally__status" data-status>5 Befunde in einem Produkt</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>§ 5 UWG</span><span>§ 4 PAngV</span><span>§ 11 PAngV</span><span>Art. 10 Health-Claims-VO</span><span>§ 356a BGB</span><span>§ 5 DDG</span><span>Art. 246a EGBGB</span><span>Art. 13 DSGVO</span><span>Textilkennzeichnungs-VO</span><span>§ 3 HWG</span><span>EuGH C-330/23</span>
+        <span>§ 5 UWG</span><span>§ 4 PAngV</span><span>§ 11 PAngV</span><span>Art. 10 Health-Claims-VO</span><span>§ 356a BGB</span><span>§ 5 DDG</span><span>Art. 246a EGBGB</span><span>Art. 13 DSGVO</span><span>Textilkennzeichnungs-VO</span><span>§ 3 HWG</span><span>EuGH C-330/23</span>
+      </div>
+    </div>
+
+    <section class="section" id="pruefpunkte">
+      <header class="section__head reveal">
+        <p class="section__no">01</p>
+        <h2 class="section__title">Was geprüft wird</h2>
+        <p class="section__lede">16 Prüfpunkte, ausgewählt nach dem, was in Deutschland regelmäßig abgemahnt wird. Jeder Befund im Bericht nennt die Fundstelle, die Rechtsgrundlage und die Lösung.</p>
+      </header>
+      <div class="table-wrap reveal">
+        <table class="catalogue">
+          <thead>
+            <tr><th scope="col">Prüfpunkt</th><th scope="col">Wo</th><th scope="col">Schwere</th><th scope="col">Rechtsgrundlage</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Pauschale Umweltaussage <span class="tag">gilt seit 27.09.2026</span></th><td>Produkttexte</td><td><span class="severity severity--3">hoch</span></td><td>§ 5 UWG; UWG-Anhang n. F. (Umsetzung Anhang I Nr. 4a RL (EU) 2024/825)</td></tr>
+            <tr><th scope="row">„Klimaneutral“ durch CO₂-Kompensation <span class="tag">gilt seit 27.09.2026</span></th><td>Produkttexte</td><td><span class="severity severity--3">hoch</span></td><td>UWG-Anhang n. F. (Umsetzung Anhang I Nr. 4c RL (EU) 2024/825); BGH, Urt. v. 27.06.2024 – I ZR 98/23</td></tr>
+            <tr><th scope="row">Nachhaltigkeitssiegel ohne anerkanntes Zertifizierungssystem <span class="tag">gilt seit 27.09.2026</span></th><td>Produkttexte</td><td><span class="severity severity--2">mittel</span></td><td>UWG-Anhang n. F. (Umsetzung Anhang I Nr. 2a RL (EU) 2024/825)</td></tr>
+            <tr><th scope="row">Krankheitsbezogene Aussage (Heilversprechen)</th><td>Produkttexte</td><td><span class="severity severity--3">hoch</span></td><td>Art. 7 Abs. 3 LMIV (VO (EU) 1169/2011); Art. 20 Kosmetik-VO (EG) 1223/2009; §§ 3, 12 HWG; § 5 UWG</td></tr>
+            <tr><th scope="row">Nicht zugelassene Gesundheitsaussage bei Lebensmitteln</th><td>Produkttexte</td><td><span class="severity severity--3">hoch</span></td><td>Art. 10 Health-Claims-VO (VO (EG) 1924/2006); § 5 UWG</td></tr>
+            <tr><th scope="row">Werbung mit Test, Auszeichnung oder Studie ohne Fundstelle</th><td>Produkttexte</td><td><span class="severity severity--2">mittel</span></td><td>§ 5 UWG (Irreführung); st. Rspr. des BGH zur Fundstellenangabe bei Testwerbung</td></tr>
+            <tr><th scope="row">Werbung mit Selbstverständlichkeiten</th><td>Produkttexte</td><td><span class="severity severity--3">hoch</span></td><td>§ 3 Abs. 3 UWG i. V. m. Anhang Nr. 10 UWG</td></tr>
+            <tr><th scope="row">Grundpreis fehlt</th><td>Produktseiten</td><td><span class="severity severity--3">hoch</span></td><td>§ 4 PAngV</td></tr>
+            <tr><th scope="row">Streichpreis ohne 30-Tage-Tiefstpreis</th><td>Produktseiten</td><td><span class="severity severity--2">mittel</span></td><td>§ 11 PAngV; EuGH, Urt. v. 26.09.2024 – C-330/23</td></tr>
+            <tr><th scope="row">Faserzusammensetzung fehlt</th><td>Produktseiten</td><td><span class="severity severity--2">mittel</span></td><td>Art. 14, 16 Textilkennzeichnungsverordnung (EU) Nr. 1007/2011</td></tr>
+            <tr><th scope="row">Impressum fehlt oder ist unvollständig</th><td>Rechtstexte</td><td><span class="severity severity--3">hoch</span></td><td>§ 5 DDG</td></tr>
+            <tr><th scope="row">Widerrufsbelehrung fehlt oder ist unvollständig</th><td>Rechtstexte</td><td><span class="severity severity--3">hoch</span></td><td>§ 312g BGB; Art. 246a § 1 Abs. 2 EGBGB; Anlagen 1 und 2 zu Art. 246a EGBGB</td></tr>
+            <tr><th scope="row">Widerrufsbutton nicht gefunden <span class="tag">gilt seit 19.06.2026</span></th><td>Rechtstexte</td><td><span class="severity severity--2">mittel</span></td><td>§ 356a BGB (Umsetzung RL (EU) 2023/2673)</td></tr>
+            <tr><th scope="row">Datenschutzerklärung nicht gefunden</th><td>Rechtstexte</td><td><span class="severity severity--3">hoch</span></td><td>Art. 13 DSGVO</td></tr>
+            <tr><th scope="row">Veralteter Hinweis auf die OS-Plattform</th><td>Rechtstexte</td><td><span class="severity severity--1">niedrig</span></td><td>VO (EU) 2024/3228 (Aufhebung der ODR-VO); Plattform eingestellt am 20.07.2025</td></tr>
+            <tr><th scope="row">Veralteter Verweis auf das TMG</th><td>Rechtstexte</td><td><span class="severity severity--1">niedrig</span></td><td>§ 5 DDG (seit 14.05.2024)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="legend reveal"><span><span class="mark mark--risiko" aria-hidden="true"></span><b>Risiko</b> – das Modell ist sich sicher</span><span><span class="mark mark--pruefen" aria-hidden="true"></span><b>Prüfen</b> – Grenzfall, oder von außen nicht feststellbar</span></p>
+    </section>
+
+    <section class="section section--field" id="ablauf">
+      <header class="section__head reveal">
+        <p class="section__no">02</p>
+        <h2 class="section__title">So läuft eine Prüfung</h2>
+      </header>
+      <ol class="steps">
+        <li class="step reveal"><span class="step__no">1</span><h3>Auslösen</h3><p>Stichwortmuster entscheiden, welche Fragen zu einem Produkt gehören, und liefern die zitierte Textstelle.</p></li>
+        <li class="step reveal"><span class="step__no">2</span><h3>Beurteilen</h3><p>Die Fragen gehen an ein kleines, günstiges Entscheidungsmodell – je dreimal, gemittelt.</p></li>
+        <li class="step reveal"><span class="step__no">3</span><h3>Nachsehen</h3><p>„Fehlt“-Befunde wie der Grundpreis werden an der echten Produktseite geprüft, im Browser gerendert.</p></li>
+        <li class="step reveal"><span class="step__no">4</span><h3>Rechtstexte</h3><p>Impressum, Widerrufsbelehrung, Widerrufsbutton und Datenschutzerklärung werden für den ganzen Shop geprüft.</p></li>
+        <li class="step reveal"><span class="step__no">5</span><h3>Zweite Prüfung</h3><p>Zwei weitere Modelle lesen jedes Produkt unabhängig. Was beide verwerfen, fällt weg; „Risiko“ bleibt nur, wenn beide zustimmen.</p></li>
+      </ol>
+    </section>
+
+    <section class="section" id="start">
+      <header class="section__head reveal">
+        <p class="section__no">03</p>
+        <h2 class="section__title">In drei Schritten startklar</h2>
+        <p class="section__lede">ShopWacht läuft auf Ihrem eigenen Rechner. Es gibt kein Konto und keinen Server von uns.</p>
+      </header>
+      <ol class="install">
+        <li class="install__step reveal">
+          <span class="install__no">1</span>
+          <div>
+            <h3>Node.js installieren</h3>
+            <p>Version 22 oder neuer von <a href="https://nodejs.org" rel="noopener">nodejs.org</a>. Chrome, Chromium oder Edge ist empfohlen: Dann werden Produktseiten so geprüft, wie ein Kunde sie sieht.</p>
+          </div>
+        </li>
+        <li class="install__step reveal">
+          <span class="install__no">2</span>
+          <div>
+            <h3>Herunterladen und starten</h3>
+            <div class="terminal">
+              <div class="terminal__bar"><span></span><span></span><span></span><button class="terminal__copy" type="button" data-copy="git clone https://github.com/Revo963/shopwacht.git&#10;cd shopwacht&#10;npm install&#10;npm start">Kopieren</button></div>
+              <pre><code><span class="prompt">$</span> git clone https://github.com/Revo963/shopwacht.git
+<span class="prompt">$</span> cd shopwacht
+<span class="prompt">$</span> npm install
+<span class="prompt">$</span> npm start
+<span class="out">ShopWacht läuft auf http://localhost:3000</span></code></pre>
+            </div>
+            <p class="install__alt">Ohne Git: <a href="https://github.com/Revo963/shopwacht/archive/refs/heads/main.zip" rel="noopener">ZIP-Datei herunterladen</a>, entpacken und im Ordner <code>npm install</code> und <code>npm start</code> ausführen.</p>
+          </div>
+        </li>
+        <li class="install__step reveal">
+          <span class="install__no">3</span>
+          <div>
+            <h3>Schlüssel eintragen, Shop prüfen</h3>
+            <p>Im Browser <code>http://localhost:3000</code> öffnen, den eigenen Schlüssel von <a href="https://openrouter.ai/keys" rel="noopener">openrouter.ai/keys</a> einfügen (am besten mit Ausgabenlimit) und die Shop-Adresse eingeben. Ohne Schlüssel läuft ein grober Demo-Modus.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section section--tight" id="zahlen">
+      <header class="section__head reveal">
+        <p class="section__no">04</p>
+        <h2 class="section__title">Zahlen, wie gemessen</h2>
+      </header>
+      <dl class="figures">
+        <div class="figure reveal"><dt>Die Software</dt><dd class="figure__value">0 €</dd><dd class="figure__note">Frei nutzbar, auch für Unternehmen. Quelltext einsehbar.</dd></div>
+        <div class="figure reveal"><dt>KI-Kosten je Produkt</dt><dd class="figure__value">≈ 0,15 ct</dd><dd class="figure__note">Gemessen: 3 Cent für 22 Produkte, 21 Cent für 150. Sie zahlen direkt an OpenRouter.</dd></div>
+        <div class="figure reveal"><dt>Dauer für 150 Produkte</dt><dd class="figure__value">≈ 10 min</dd><dd class="figure__note">Erwartung, noch nicht am Stück gemessen: Ein Lauf brauchte 20 Minuten, seither ist die Seitenprüfung etwa viermal schneller.</dd></div>
+      </dl>
+
+      <div class="table-wrap reveal">
+        <table class="accuracy">
+          <caption>Treffsicherheit auf Shops, die ShopWacht vorher nie gesehen hat</caption>
+          <thead>
+            <tr><th scope="col">Stichprobe</th><th scope="col">Befunde, die echte Probleme sind</th><th scope="col">davon auf Stufe „Risiko“</th><th scope="col">Echte Probleme gefunden</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">8 Shopify-Shops, 100 Produkte</th><td>84 %</td><td>100 %</td><td>82 %</td></tr>
+            <tr><th scope="row">3 WooCommerce-Shops</th><td>96 %</td><td>100 %</td><td>96 %</td></tr>
+            <tr><th scope="row">3 weitere WooCommerce-Shops</th><td>64 %</td><td>100 %</td><td>85 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="caveat reveal">Eigene Messung: Der Programmstand wurde vor jeder Stichprobe eingefroren, die Produkte wurden nach einem schriftlichen Leitfaden bewertet, ohne die Ergebnisse von ShopWacht zu kennen. Die Bewertungen wurden nicht anwaltlich geprüft, die Stichproben sind klein. Lesen Sie die Zahlen als grobe Orientierung – die schwächste Prüfung ist die pauschale Umweltaussage. Details stehen im <a href="https://github.com/Revo963/shopwacht#how-good-is-it" rel="noopener">README</a>.</p>
+    </section>
+
+    <section class="section section--field" id="daten">
+      <header class="section__head reveal">
+        <p class="section__no">05</p>
+        <h2 class="section__title">Läuft bei Ihnen. Bleibt bei Ihnen.</h2>
+      </header>
+      <ul class="pledges">
+        <li class="reveal"><h3>Kein Konto, kein Tracking</h3><p>Die Anwendung antwortet nur auf Ihrem Rechner und schickt nichts an uns.</p></li>
+        <li class="reveal"><h3>Was den Rechner verlässt</h3><p>Anfragen an den geprüften Shop – und die gelesenen Produkt- und Rechtstexte, die über Ihren Schlüssel an OpenRouter und die Modellanbieter dahinter gehen.</p></li>
+        <li class="reveal"><h3>Nur öffentliche Adressen</h3><p>Eine geprüfte Seite wird in einem Browser auf Ihrem Rechner geöffnet. ShopWacht lässt sie nur öffentliche Internetadressen erreichen, nichts in Ihrem eigenen Netz.</p></li>
+        <li class="reveal"><h3>Berichte gehören Ihnen</h3><p>Jeder Bericht liegt als Datei auf Ihrer Festplatte und lässt sich als CSV exportieren.</p></li>
+      </ul>
+    </section>
+
+    <section class="section" id="lizenz">
+      <header class="section__head reveal">
+        <p class="section__no">06</p>
+        <h2 class="section__title">Frei nutzbar. Verkaufen nur mit Absprache.</h2>
+      </header>
+      <div class="licence reveal">
+        <p>ShopWacht steht unter der <a href="https://github.com/Revo963/shopwacht/blob/main/LICENSE" rel="noopener">PolyForm Shield License 1.0.0</a>. Kurz gesagt: Sie dürfen es nutzen, verändern und auf beliebig vielen Shops einsetzen – privat und im Unternehmen, ohne zu zahlen.</p>
+        <p>Eine Vereinbarung brauchen Sie, wenn Sie ShopWacht oder etwas darauf Aufbauendes als konkurrierendes Produkt oder als Dienstleistung anbieten wollen, etwa es verkaufen oder Prüfungen damit verkaufen.</p>
+        <p class="licence__contact">Dafür und für Fragen: <a href="mailto:revo.contact@yahoo.com">revo.contact@yahoo.com</a></p>
+      </div>
+    </section>
+
+    <section class="closing">
+      <p class="closing__line reveal">Ein Bericht ist eine Liste von Dingen, die Sie sich ansehen sollten. <span>Kein Urteil.</span></p>
+      <a class="button button--primary reveal" href="https://github.com/Revo963/shopwacht" rel="noopener">ShopWacht auf GitHub <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+    <p class="footer__disclaimer"><strong>Keine Rechtsberatung.</strong> ShopWacht ist eine automatisierte Vorprüfung öffentlich sichtbarer Shop-Inhalte. Sie ersetzt keine anwaltliche Prüfung und garantiert nicht, dass ein Shop abmahnsicher ist. ShopWacht macht Fehler in beide Richtungen.</p>
+    <nav class="footer__nav" aria-label="Rechtliches">
+      <a href="https://github.com/Revo963/shopwacht" rel="noopener">GitHub</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+    </div>
+    <p class="footer__mark" aria-hidden="true"><span></span>ShopWacht</p>
+  </footer>
+
+  <script src="site.js" defer></script>
+</body>
+</html>
